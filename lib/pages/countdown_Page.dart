@@ -1,6 +1,7 @@
 import 'package:circular_countdown/circular_countdown.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:tataclassedgeassignment/route/routes.dart';
 import 'package:timer_controller/timer_controller.dart';
 
 class WelcomePage extends StatelessWidget {
@@ -47,7 +48,7 @@ class __CountdownsState extends State<_Countdowns> {
   @override
   void initState() {
     super.initState();
-    _controller = TimerController.seconds(5);
+    _controller = TimerController.seconds(3);
   }
 
   @override
@@ -64,11 +65,9 @@ class __CountdownsState extends State<_Countdowns> {
       listenWhen: (previousValue, currentValue) =>
           previousValue.status != currentValue.status,
       listener: (context, timerValue) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          _StatusSnackBar(
-            'Status: ${describeEnum(timerValue.status)}',
-          ),
-        );
+        // ignore: avoid_print
+        print("Timer finished ${timerValue.status}");
+        Navigator.pushNamed(context, MyRoutes.homeRoute);
       },
       child: TimerControllerBuilder(
         controller: _controller,
@@ -77,12 +76,6 @@ class __CountdownsState extends State<_Countdowns> {
           switch (timerValue.status) {
             case TimerStatus.running:
               timerColor = Colors.green;
-              break;
-            case TimerStatus.paused:
-              timerColor = Colors.grey;
-              break;
-            case TimerStatus.finished:
-              timerColor = Colors.red;
               break;
             default:
           }

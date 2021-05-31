@@ -1,0 +1,19 @@
+{
+    "topics": [
+      {
+        "id": 1,
+        "name": "Indian Democracy",
+        "desc": "Democracy in India, as elsewhere, is not just about periodic elections, nor about voter turnouts, nor about oratory"
+        },
+        {
+        "id": 2,
+        "name": "Indian History",
+        "desc": "The Mature Indus civilization flourished from about 2600 to 1900 BCE, marking the beginning of urban civilization on the Indian subcontinent"
+       },
+       {
+        "id": 3,
+        "name": "Indian Economy",
+        "desc": "The economy of India is characterised as a middle income developing market economy."
+      }
+    ]
+  }
