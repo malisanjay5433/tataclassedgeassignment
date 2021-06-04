@@ -1,25 +1,87 @@
 import 'package:flutter/material.dart';
+import 'package:tataclassedgeassignment/pages/countdown_Page.dart';
+import 'package:tataclassedgeassignment/pages/home_page.dart';
+import 'package:tataclassedgeassignment/pages/video_page.dart';
+import 'package:tataclassedgeassignment/route/routes.dart';
+import 'package:velocity_x/velocity_x.dart';
 
-class List extends StatefulWidget {
+class ListOfTopics extends StatefulWidget {
   @override
-  State<List> createState() => _ListState();
+  State<ListOfTopics> createState() => _TopicListState();
 }
 
-class _ListState extends State<List> {
-  List list = ['Java', 'Flutter', 'Swift', 'Kotlin'];
+class _TopicListState extends State<ListOfTopics> {
+  List list = [
+    'Flutter',
+    'Golang',
+    'Objective-c',
+    'C++',
+    'Java',
+    'Swift',
+    'Kotlin',
+    'SwiftUI'
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text("TataClassEdge"),
       ),
-      body: ListView.builder(
-          itemCount: list.length,
-          itemBuilder: (context, index) {
-            return ListTile(
-              title: Text(list[index]),
-            );
-          }),
+      // drawer: const Drawer(),
+      body: Container(
+        decoration: const BoxDecoration(
+            gradient: LinearGradient(
+          begin: Alignment.topRight,
+          end: Alignment.bottomLeft,
+          colors: [
+            Colors.deepPurple,
+            Colors.purple,
+            Colors.redAccent,
+          ],
+        )),
+        child: ListView.builder(
+            itemCount: list.length,
+            itemBuilder: (context, index) {
+              return Card(
+                elevation: 8.0,
+                clipBehavior: Clip.antiAlias,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20)),
+                child: Container(
+                  padding: const EdgeInsets.all(16),
+                  color: Colors.white,
+                  child: ListTile(
+                    title: list[index]
+                        .toString()
+                        .text
+                        .xl3
+                        .bold
+                        .color(Colors.deepPurple)
+                        .make(),
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => HomePage()));
+                    },
+                  ),
+                ),
+              );
+            }),
+      ),
+    );
+  }
+}
+// ignore: use_key_in_widget_constructors
+class CatalogHeader extends StatefulWidget {
+  @override
+  State<CatalogHeader> createState() => _CatalogHeaderState();
+}
+
+class _CatalogHeaderState extends State<CatalogHeader> {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: ["TataClassEdge Quiz".text.xl4.bold.color(Colors.white).make()],
     );
   }
 }

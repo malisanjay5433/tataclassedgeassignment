@@ -48,7 +48,7 @@ class __CountdownsState extends State<_Countdowns> {
   @override
   void initState() {
     super.initState();
-    _controller = TimerController.seconds(3);
+    _controller = TimerController.seconds(5);
   }
 
   @override

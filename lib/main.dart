@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tataclassedgeassignment/pages/home_page.dart';
 import 'package:tataclassedgeassignment/pages/listview_page.dart';
+import 'package:tataclassedgeassignment/pages/video_page.dart';
 import 'package:tataclassedgeassignment/route/routes.dart';
-
 import 'pages/countdown_Page.dart';
 
 void main() {
@@ -23,12 +23,13 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.deepPurple,
       ),
       debugShowCheckedModeBanner: false,
-      home: TopicList(),
-      // initialRoute: "/",
-      // routes: {
-      // MyRoutes.welcomeRoute: (context) => const WelcomePage(),
-      // MyRoutes.homeRoute: (context) => HomePage()
-      // },
+      home: ListOfTopics(),
+      initialRoute: "/",
+      routes: {
+        MyRoutes.welcomeRoute: (context) => const WelcomePage(),
+        MyRoutes.homeRoute: (context) => HomePage(),
+        MyRoutes.videoRoute: (context) => const VideoPlayer()
+      },
       // home: HomePage(),
     );
   }

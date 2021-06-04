@@ -38,8 +38,7 @@ dependencies:
   circular_countdown: ^2.1.0
   gap: ^2.0.0
   timer_controller: ^0.1.0
-  photo_view: ^0.5.0
-
+  chewie: ^1.2.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
