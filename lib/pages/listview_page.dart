@@ -3,6 +3,7 @@ import 'package:tataclassedgeassignment/pages/countdown_Page.dart';
 import 'package:tataclassedgeassignment/pages/home_page.dart';
 import 'package:tataclassedgeassignment/pages/video_page.dart';
 import 'package:tataclassedgeassignment/route/routes.dart';
+import 'package:tataclassedgeassignment/utility/fadepageroute.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class ListOfTopics extends StatefulWidget {
@@ -11,16 +12,7 @@ class ListOfTopics extends StatefulWidget {
 }
 
 class _TopicListState extends State<ListOfTopics> {
-  List list = [
-    'Flutter',
-    'Golang',
-    'Objective-c',
-    'C++',
-    'Java',
-    'Swift',
-    'Kotlin',
-    'SwiftUI'
-  ];
+  List list = ['Flutter', 'Objective-c', 'Java', 'Swift', 'Kotlin', 'SwiftUI'];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,6 +21,7 @@ class _TopicListState extends State<ListOfTopics> {
       ),
       // drawer: const Drawer(),
       body: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
         decoration: const BoxDecoration(
             gradient: LinearGradient(
           begin: Alignment.topRight,
@@ -48,7 +41,7 @@ class _TopicListState extends State<ListOfTopics> {
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20)),
                 child: Container(
-                  padding: const EdgeInsets.all(16),
+                  padding: const EdgeInsets.all(10),
                   color: Colors.white,
                   child: ListTile(
                     title: list[index]
@@ -59,8 +52,10 @@ class _TopicListState extends State<ListOfTopics> {
                         .color(Colors.deepPurple)
                         .make(),
                     onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => HomePage()));
+                      // Navigator.push(context,
+                      // MaterialPageRoute(builder: (context) => HomePage()));
+                      Navigator.of(context)
+                          .push(FadePageRoute(widget: HomePage()));
                     },
                   ),
                 ),
@@ -70,6 +65,7 @@ class _TopicListState extends State<ListOfTopics> {
     );
   }
 }
+
 // ignore: use_key_in_widget_constructors
 class CatalogHeader extends StatefulWidget {
   @override

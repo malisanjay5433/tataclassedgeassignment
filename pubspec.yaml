@@ -39,6 +39,7 @@ dependencies:
   gap: ^2.0.0
   timer_controller: ^0.1.0
   chewie: ^1.2.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
       home: ListOfTopics(),
       initialRoute: "/",
       routes: {
-        MyRoutes.welcomeRoute: (context) => const WelcomePage(),
+        // MyRoutes.welcomeRoute: (context) => const WelcomePage(),
         MyRoutes.homeRoute: (context) => HomePage(),
         MyRoutes.videoRoute: (context) => const VideoPlayer()
       },
