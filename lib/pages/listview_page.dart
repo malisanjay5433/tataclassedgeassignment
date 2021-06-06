@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tataclassedgeassignment/pages/countdown_Page.dart';
-import 'package:tataclassedgeassignment/pages/home_page.dart';
+import 'package:tataclassedgeassignment/pages/quiz_page.dart';
 import 'package:tataclassedgeassignment/pages/video_page.dart';
-import 'package:tataclassedgeassignment/route/routes.dart';
 import 'package:tataclassedgeassignment/utility/fadepageroute.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -12,14 +10,26 @@ class ListOfTopics extends StatefulWidget {
 }
 
 class _TopicListState extends State<ListOfTopics> {
-  List list = ['Flutter', 'Objective-c', 'Java', 'Swift', 'Kotlin', 'SwiftUI'];
+  List list = [
+    "Cricket",
+    "Football",
+    'Flutter',
+    'Objective-c',
+    'Java',
+    'Swift',
+    'Kotlin',
+    'SwiftUI'
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("TataClassEdge"),
-      ),
+      // appBar: AppBar(
+      //   title: const Text("TataClassEdge"),
+      // ),
       // drawer: const Drawer(),
+      appBar: AppBar(
+        title: "List Of Topics".text.xl4.make(),
+      ),
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
         decoration: const BoxDecoration(
@@ -53,9 +63,11 @@ class _TopicListState extends State<ListOfTopics> {
                         .make(),
                     onTap: () {
                       // Navigator.push(context,
-                      // MaterialPageRoute(builder: (context) => HomePage()));
-                      Navigator.of(context)
-                          .push(FadePageRoute(widget: HomePage()));
+                      // MaterialPageRoute(builder: (context) => QuizPage()));
+                      // Navigator.of(context).push(
+                      //     FadePageRoute(widget: widget(child: QuizPage())));
+                      Navigator.push(
+                          context, FadePageRoute(const VideoPlayer()));
                     },
                   ),
                 ),

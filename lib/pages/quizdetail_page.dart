@@ -15,7 +15,7 @@ class _QuizDetailsState extends State<QuizDetails> {
       appBar: AppBar(
         title: "Oh! My Quiz".text.xl4.bold.make(),
       ),
-      body: const Hero(tag: '1', child: optionAnswerWidget()),
+      body: const Hero(tag: '2', child: optionAnswerWidget()),
     );
   }
 }

@@ -3,6 +3,7 @@ import 'package:chewie/chewie.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:tataclassedgeassignment/utility/theme.dart';
 import 'package:video_player/video_player.dart';
+import 'package:velocity_x/velocity_x.dart';
 
 class VideoPlayer extends StatefulWidget {
   const VideoPlayer({
@@ -39,32 +40,32 @@ class _ChewieDemoState extends State<VideoPlayer> {
   }
 
   Future<void> initializePlayer() async {
-    _videoPlayerController1 =
-        VideoPlayerController.network('https://youtu.be/4Wq8_QtufbU');
-    _videoPlayerController2 =
-        VideoPlayerController.network('https://youtu.be/4Wq8_QtufbU');
+    _videoPlayerController1 = VideoPlayerController.network(
+        'https://assets.mixkit.co/videos/preview/mixkit-a-girl-blowing-a-bubble-gum-at-an-amusement-park-1226-large.mp4');
+    // _videoPlayerController2 =
+    //     VideoPlayerController.network('https://youtu.be/4Wq8_QtufbU');
     await Future.wait([
       _videoPlayerController1.initialize(),
-      _videoPlayerController2.initialize()
+      // _videoPlayerController2.initialize()
     ]);
     _chewieController = ChewieController(
       videoPlayerController: _videoPlayerController1,
       autoPlay: true,
       looping: true,
-      subtitle: Subtitles([
-        Subtitle(
-          index: 0,
-          start: Duration.zero,
-          end: const Duration(seconds: 10),
-          text: 'Hello from subtitles',
-        ),
-        Subtitle(
-          index: 0,
-          start: const Duration(seconds: 10),
-          end: const Duration(seconds: 20),
-          text: 'Whats up? :)',
-        ),
-      ]),
+      // subtitle: Subtitles([
+      //   Subtitle(
+      //     index: 0,
+      //     start: Duration.zero,
+      //     end: const Duration(seconds: 10),
+      //     // text: 'Hello from subtitles',
+      //   ),
+      //   Subtitle(
+      //     index: 0,
+      //     start: const Duration(seconds: 10),
+      //     end: const Duration(seconds: 20),
+      //     text: 'Whats up? :)',
+      //   ),
+      // ]),
       subtitleBuilder: (context, subtitle) => Container(
         padding: const EdgeInsets.all(10.0),
         child: Text(
@@ -91,15 +92,22 @@ class _ChewieDemoState extends State<VideoPlayer> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: AppTheme.dark.copyWith(
-        platform: _platform ?? Theme.of(context).platform,
+    return Scaffold(
+      appBar: AppBar(
+        title: "Video".text.xl4.make(),
       ),
-      home: Scaffold(
-        // appBar: AppBar(
-        //   title: Text(widget.title),
-        // ),
-        body: Column(
+      body: Container(
+        decoration: const BoxDecoration(
+            gradient: LinearGradient(
+          begin: Alignment.topRight,
+          end: Alignment.bottomLeft,
+          colors: [
+            Colors.deepPurple,
+            Colors.purple,
+            Colors.redAccent,
+          ],
+        )),
+        child: Column(
           children: <Widget>[
             Expanded(
               child: Center(
@@ -119,12 +127,12 @@ class _ChewieDemoState extends State<VideoPlayer> {
                       ),
               ),
             ),
-            TextButton(
-              onPressed: () {
-                _chewieController?.enterFullScreen();
-              },
-              child: const Text('Fullscreen'),
-            ),
+            // TextButton(
+            //   onPressed: () {
+            //     _chewieController?.enterFullScreen();
+            //   },
+            //   child: const Text('Fullscreen'),
+            // ),
             Row(
               children: <Widget>[
                 Expanded(
@@ -138,20 +146,20 @@ class _ChewieDemoState extends State<VideoPlayer> {
                           videoPlayerController: _videoPlayerController1,
                           autoPlay: true,
                           looping: true,
-                          subtitle: Subtitles([
-                            Subtitle(
-                              index: 0,
-                              start: Duration.zero,
-                              end: const Duration(seconds: 10),
-                              text: 'Hello from subtitles',
-                            ),
-                            Subtitle(
-                              index: 0,
-                              start: const Duration(seconds: 10),
-                              end: const Duration(seconds: 20),
-                              text: 'Whats up? :)',
-                            ),
-                          ]),
+                          // subtitle: Subtitles([
+                          //   Subtitle(
+                          //     index: 0,
+                          //     start: Duration.zero,
+                          //     end: const Duration(seconds: 10),
+                          //     text: 'Hello from subtitles',
+                          //   ),
+                          //   Subtitle(
+                          //     index: 0,
+                          //     start: const Duration(seconds: 10),
+                          //     end: const Duration(seconds: 20),
+                          //     text: 'Whats up? :)',
+                          //   ),
+                          // ]),
                           subtitleBuilder: (context, subtitle) => Container(
                             padding: const EdgeInsets.all(10.0),
                             child: Text(
@@ -164,7 +172,7 @@ class _ChewieDemoState extends State<VideoPlayer> {
                     },
                     child: const Padding(
                       padding: EdgeInsets.symmetric(vertical: 16.0),
-                      child: Text("Landscape Video"),
+                      // child: Text("Landscape Video"),
                     ),
                   ),
                 ),
@@ -180,32 +188,32 @@ class _ChewieDemoState extends State<VideoPlayer> {
                           autoPlay: true,
                           looping: true,
                           /* subtitle: Subtitles([
-                            Subtitle(
-                              index: 0,
-                              start: Duration.zero,
-                              end: const Duration(seconds: 10),
-                              text: 'Hello from subtitles',
-                            ),
-                            Subtitle(
-                              index: 0,
-                              start: const Duration(seconds: 10),
-                              end: const Duration(seconds: 20),
-                              text: 'Whats up? :)',
-                            ),
-                          ]),
-                          subtitleBuilder: (context, subtitle) => Container(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Text(
-                              subtitle,
-                              style: const TextStyle(color: Colors.white),
-                            ),
-                          ), */
+                              Subtitle(
+                                index: 0,
+                                start: Duration.zero,
+                                end: const Duration(seconds: 10),
+                                text: 'Hello from subtitles',
+                              ),
+                              Subtitle(
+                                index: 0,
+                                start: const Duration(seconds: 10),
+                                end: const Duration(seconds: 20),
+                                text: 'Whats up? :)',
+                              ),
+                            ]),
+                            subtitleBuilder: (context, subtitle) => Container(
+                              padding: const EdgeInsets.all(10.0),
+                              child: Text(
+                                subtitle,
+                                style: const TextStyle(color: Colors.white),
+                              ),
+                            ), */
                         );
                       });
                     },
                     child: const Padding(
                       padding: EdgeInsets.symmetric(vertical: 16.0),
-                      child: Text("Portrait Video"),
+                      // child: Text("Portrait Video"),
                     ),
                   ),
                 )

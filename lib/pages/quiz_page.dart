@@ -4,26 +4,26 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:tataclassedgeassignment/pages/quizdetail_page.dart';
+import 'package:tataclassedgeassignment/utility/fadepageroute.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import 'package:tataclassedgeassignment/model/topics.dart';
 import 'package:circular_countdown/circular_countdown.dart';
-import 'package:tataclassedgeassignment/route/routes.dart';
 import 'package:timer_controller/timer_controller.dart';
 
-class HomePage extends StatefulWidget {
+class QuizPage extends StatefulWidget {
   @override
-  _HomePageState createState() => _HomePageState();
+  _QuizPageState createState() => _QuizPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _QuizPageState extends State<QuizPage> {
   final url = "https://api.jsonbin.io/b/604dbddb683e7e079c4eefd3";
   late bool isSelected = false;
   final questions = [
-    "Who won 2011 cricket world cup?",
-    "Who won 2020 cricket IPL?"
+    "What is the fastest animal in the world?",
   ];
-  final optionsWc = ["England", "Australia", "India", "NewZeland"];
+  final optionsWc = ["A. Turtle", "B. Cheetah", "C. India", "D. NewZeland"];
   int delayAmount = 300;
   @override
   void initState() {
@@ -48,7 +48,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
         // backgroundColor: Colors.purple,
         appBar: AppBar(
-          title: "Oh! My Quiz".text.xl4.bold.make(),
+          title: "My Quiz".text.xl4.bold.make(),
         ),
         body: Center(
           child: Container(
@@ -115,17 +115,11 @@ class _HomePageState extends State<HomePage> {
                             flex: 1,
                             fit: FlexFit.tight,
                             child: InkWell(
-                              onTap: () {
-                                //
-                              },
-                              child: Hero(
-                                tag: '1',
-                                child: optionsWidget(
-                                    options: optionsWc,
-                                    delayAmount: delayAmount),
-                              ),
+                              child: optionsWidget(
+                                  options: optionsWc, delayAmount: delayAmount),
                             ),
-                          ), //Container
+                          ),
+                          //Container
                           //Flexible
                         ], //<Widget>[]
                         // mainAxisAlignment: MainAxisAlignment.center,
@@ -141,8 +135,6 @@ class _HomePageState extends State<HomePage> {
         ); //Scaffold
   }
 }
-
-class _Countdowns {}
 
 class optionsWidget extends StatelessWidget {
   const optionsWidget({
@@ -173,6 +165,7 @@ class optionsWidget extends StatelessWidget {
             onTap: () {
               print(options[index]);
               // Navigator.of(context).push(FadePageRoute(widget: QuizDetails()));
+              // Navigator.push(context, FadePageRoute(QuizDetails()));
             },
             child: Container(
               padding: const EdgeInsets.all(8),
@@ -188,7 +181,7 @@ class optionsWidget extends StatelessWidget {
                   child: Column(
                     children: <Widget>[
                       const Icon(Icons.account_balance_sharp).py32(),
-                      options[index].text.xl2.bold.make()
+                      options[index].text.xl.bold.make()
                     ],
                   ),
                 ),
@@ -296,13 +289,17 @@ class __CountdownsState extends State<Countdowns> {
       listenWhen: (previousValue, currentValue) =>
           previousValue.status != currentValue.status,
       listener: (context, timerValue) {
-        // ignore: avoid_print
-        print("Timer finished ${timerValue.status}");
-        if (timerValue.status == TimerStatus.finished) {
-          optionsWidget(options: optionsIpl, delayAmount: 200);
-        }
+        // final snackBar = SnackBar(
+        //   content: const Text('Your time is up! come back again'),
+        //   action: SnackBarAction(
+        //     label: 'Undo',
+        //     onPressed: () {
+        //       // Some code to undo the change.
+        //     },
+        //   ),
+        // );
+        // ScaffoldMessenger.of(context).showSnackBar(snackBar);
         setState(() {});
-        // Navigator.popUntil(context, (route) => '')
       },
       child: TimerControllerBuilder(
         controller: _controller,
@@ -331,11 +328,11 @@ class __CountdownsState extends State<Countdowns> {
                   fontSize: 60,
                 ),
               ),
-              if (isFinished == true)
-                optionsWidget(
-                  options: optionsIpl,
-                  delayAmount: 200,
-                )
+              // if (isFinished == true)
+              //   optionsWidget(
+              //     options: optionsIpl,
+              //     delayAmount: 200,
+              //   )
             ],
           );
         },
@@ -367,12 +364,3 @@ class _ActionButtonState extends State<_ActionButton> {
     );
   }
 }
-
-// class _StatusSnackBar extends SnackBar {
-//   _StatusSnackBar(
-//     String title,
-//   ) : super(
-//           content: Text(title),
-//           duration: const Duration(seconds: 1),
-//         );
-// }

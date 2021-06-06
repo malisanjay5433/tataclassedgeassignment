@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:tataclassedgeassignment/pages/home_page.dart';
+import 'package:tataclassedgeassignment/pages/quiz_page.dart';
 import 'package:tataclassedgeassignment/pages/listview_page.dart';
 import 'package:tataclassedgeassignment/pages/video_page.dart';
 import 'package:tataclassedgeassignment/route/routes.dart';
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
       initialRoute: "/",
       routes: {
         // MyRoutes.welcomeRoute: (context) => const WelcomePage(),
-        MyRoutes.homeRoute: (context) => HomePage(),
+        MyRoutes.homeRoute: (context) => QuizPage(),
         MyRoutes.videoRoute: (context) => const VideoPlayer()
       },
       // home: HomePage(),

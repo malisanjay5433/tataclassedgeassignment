@@ -1,21 +1,28 @@
 import 'package:flutter/material.dart';
 
-class FadePageRoute extends PageRouteBuilder {
-  final Widget widget;
-  FadePageRoute({required this.widget})
-      : super(pageBuilder: (
-          BuildContext context,
-          Animation<double> animation,
-          Animation<double> secondaryanimation,
-        ) {
-          return widget;
-        }, transitionsBuilder: ((BuildContext context,
-            Animation<double> animation,
-            Animation<double> secondaryanimation,
-            Widget child) {
-          return FadeTransition(
-            opacity: Tween(begin: 0.0, end: 1.0).animate(animation),
-            child: child,
-          );
-        }));
+class FadePageRoute<T> extends PageRoute<T> {
+  late final Widget child;
+
+  FadePageRoute(this.child);
+
+  @override
+  Color get barrierColor => Colors.black;
+
+  @override
+  String get barrierLabel => '';
+
+  @override
+  bool get maintainState => true;
+
+  @override
+  Duration get transitionDuration => const Duration(seconds: 2);
+
+  @override
+  Widget buildPage(BuildContext context, Animation<double> animation,
+      Animation<double> secondaryAnimation) {
+    return FadeTransition(
+      opacity: animation,
+      child: child,
+    );
+  }
 }
