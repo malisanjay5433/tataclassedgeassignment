@@ -62,12 +62,14 @@ class _TopicListState extends State<ListOfTopics> {
                         .color(Colors.deepPurple)
                         .make(),
                     onTap: () {
-                      // Navigator.push(context,
-                      // MaterialPageRoute(builder: (context) => QuizPage()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const VideoPlayer()));
                       // Navigator.of(context).push(
                       //     FadePageRoute(widget: widget(child: QuizPage())));
-                      Navigator.push(
-                          context, FadePageRoute(const VideoPlayer()));
+                      // Navigator.push(
+                      // context, FadePageRoute(const VideoPlayer()));
                     },
                   ),
                 ),
